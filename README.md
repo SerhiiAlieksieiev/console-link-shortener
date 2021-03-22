@@ -1,4 +1,4 @@
-# Devman notification bot
+# Console link shortener
 
 Бот позволяет укоротить ссылку и узнать количество кликов по ней. Использует Bitly API и Telegram.
  
