@@ -17,8 +17,10 @@ def main():
     long_url = input()
     bitly_token = "Bearer bbf5c519e9eb62def990efcdd45fd4493ec3f468"
 
-
-    print('Битлинк', shorten_link(bitly_token, long_url))
+    try:
+        print('Битлинк', shorten_link(bitly_token, long_url))
+    except requests.exceptions.HTTPError as e:
+        print("Ошибка \n {}".format(e))
 
 if __name__ == '__main__':
     main()
