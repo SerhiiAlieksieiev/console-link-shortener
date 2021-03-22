@@ -1,3 +1,6 @@
+import os
+
+import dotenv
 import requests
 
 
@@ -9,7 +12,7 @@ def shorten_link(token, url):
         bitlink = response.json()['link']
         return bitlink
     except requests.exceptions.HTTPError as e:
-        print("Ошибка1 \n {}".format(e))
+        return ("Ошибка \n {}".format(e))
 
 
 def count_clicks(token, url):
@@ -20,7 +23,7 @@ def count_clicks(token, url):
         clicks_count = response.json()['link_clicks'][0]['clicks']
         return clicks_count
     except requests.exceptions.HTTPError as e:
-        print("Ошибка2 \n {}".format(e))
+        return ("Ошибка \n {}".format(e))
 
 
 def check_bitlink(token, url):
@@ -34,19 +37,20 @@ def check_bitlink(token, url):
 
 
 def main():
-    bitly_token = "Bearer bbf5c519e9eb62def990efcdd45fd4493ec3f468"
+    dotenv.load_dotenv('.env')
+    bitly_token = os.environ['BITLY_TOKEN']
     link = input()
     headers = {
         "Authorization": bitly_token
     }
-    request_body = {
+    body = {
         "long_url": link
     }
 
     if check_bitlink(headers, link):
         print('Количество кликов: ', count_clicks(headers, link))
     else:
-        print('Битлинк', shorten_link(headers, request_body))
+        print('Битлинк', shorten_link(headers, body))
 
 
 if __name__ == '__main__':
