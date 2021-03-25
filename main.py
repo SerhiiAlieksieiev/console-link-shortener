@@ -1,9 +1,8 @@
 import os
+from urllib.parse import urlparse
 
 import dotenv
 import requests
-
-from urllib.parse import urlparse
 
 
 def shorten_link(headers, payload):
@@ -26,6 +25,7 @@ def check_bitlink(headers, link):
     reqest_url = f"https://api-ssl.bitly.com/v4/bitlinks/{link}"
     response = requests.get(reqest_url, headers=headers)
     return response.ok
+
 
 def main():
     dotenv.load_dotenv('.env')
