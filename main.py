@@ -22,13 +22,8 @@ def count_clicks(token, url):
 
 def check_bitlink(token, url):
     reqest_url = f"https://api-ssl.bitly.com/v4/bitlinks/{url}"
-    try:
-        response = requests.get(reqest_url, headers=token)
-        response.raise_for_status()
-        return True
-    except requests.exceptions.HTTPError:
-        return False
-
+    response = requests.get(reqest_url, headers=token)
+    return response.ok
 
 def main():
     dotenv.load_dotenv('.env')
