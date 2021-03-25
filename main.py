@@ -12,7 +12,7 @@ def shorten_link(token, url):
         bitlink = response.json()['link']
         return bitlink
     except requests.exceptions.HTTPError as e:
-        return ("Ошибка \n {}".format(e))
+        return "Ошибка \n {}".format(e)
 
 
 def count_clicks(token, url):
@@ -23,7 +23,7 @@ def count_clicks(token, url):
         clicks_count = response.json()['link_clicks'][0]['clicks']
         return clicks_count
     except requests.exceptions.HTTPError as e:
-        return ("Ошибка \n {}".format(e))
+        return "Ошибка \n {}".format(e)
 
 
 def check_bitlink(token, url):
