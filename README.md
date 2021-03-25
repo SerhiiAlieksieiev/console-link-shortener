@@ -7,23 +7,25 @@
 
   	```sh
   	git clone https://github.com/SerhiiAlieksieiev/console-link-shortener.git
-  	```
+	```
+	
 2. Сделайте виртуальное окружение командой
 
 	```sh
-    	python -m venv --copies /полный/путь/до/папки/виртуального/окружения 
-    	```
+    python -m venv --copies /полный/путь/до/папки/виртуального/окружения 
+    ```
+	
 3. Установите зависимости  командой 
 
 	```sh
-    	py -m pip install -r requirements.txt
-    	```
+    py -m pip install -r requirements.txt
+    ```
 
 4. Запустите скрипт командой 
 
 	```sh
-    	python main.py
-    	```
+    python main.py
+    ```
  
 ### Переменные окружения
 Часть настроек проекта берётся из переменных окружения. Чтобы их определить, создайте файл `.env` рядом  с `main.py` и запишите туда данные в таком формате: ПЕРЕМЕННАЯ=значение.
