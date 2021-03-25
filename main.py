@@ -32,7 +32,9 @@ def main():
     bitly_token = os.environ['BITLY_TOKEN']
     url = input()
     link_components = urlparse(url)
-    link = link_components[1] + link_components[2]
+    netloc = link_components[1]
+    path = link_components[2]
+    link = netloc + path
     headers = {
         "Authorization": bitly_token
     }
