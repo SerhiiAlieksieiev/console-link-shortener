@@ -34,7 +34,7 @@ def main():
     link_components = urlparse(url)
     netloc = link_components[1]
     path = link_components[2]
-    link = netloc + path
+    link = f'{netloc}{path}'
     headers = {
         'Authorization': bitly_token
     }
