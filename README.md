@@ -21,10 +21,10 @@
     py -m pip install -r requirements.txt
     ```
 
-4. Запустите скрипт командой 
+4. Запустите скрипт командой с вашей ссылкой
 
 	```sh
-    python main.py
+    python main.py https://bit.ly/3vMfewL
     ```
  
 ### Переменные окружения
