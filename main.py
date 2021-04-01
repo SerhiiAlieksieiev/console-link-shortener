@@ -1,3 +1,4 @@
+import argparse
 import os
 from urllib.parse import urlparse
 
@@ -30,8 +31,12 @@ def check_bitlink(headers, link):
 def main():
     dotenv.load_dotenv('.env')
     bitly_token = os.environ['BITLY_TOKEN']
-    url = input()
-    link_components = urlparse(url)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('url', nargs='?')
+    namespace = parser.parse_args()
+
+    link_components = urlparse(namespace.url)
     netloc = link_components[1]
     path = link_components[2]
     link = f'{netloc}{path}'
@@ -39,7 +44,7 @@ def main():
         'Authorization': bitly_token
     }
     payload = {
-        'long_url': url
+        'long_url': namespace.url
     }
 
     if check_bitlink(headers, link):
