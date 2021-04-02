@@ -32,8 +32,9 @@ def main():
     dotenv.load_dotenv('.env')
     bitly_token = os.environ['BITLY_TOKEN']
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('url', nargs='?')
+    parser = argparse.ArgumentParser(description="link shortener")
+    parser.add_argument('url', nargs='?',
+                        help='link')
     namespace = parser.parse_args()
 
     link_components = urlparse(namespace.url)

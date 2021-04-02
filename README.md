@@ -20,8 +20,10 @@
 	```sh
     py -m pip install -r requirements.txt
     ```
+4. Добавьте [переменные окружения](https://github.com/SerhiiAlieksieiev/console-link-shortener#%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-%D0%BE%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F)
 
-4. Запустите скрипт командой с вашей ссылкой
+
+5. Запустите скрипт командой с вашей ссылкой
 
 	```sh
     python main.py https://bit.ly/3vMfewL
