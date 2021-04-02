@@ -52,8 +52,8 @@ def main():
             print('Количество кликов: ', count_clicks(headers, link))
         else:
             print('Битлинк', shorten_link(headers, payload))
-    except requests.exceptions.HTTPError as e:
-        print('Ошибка \n {}'.format(e))
+    except requests.exceptions.HTTPError as http_error:
+        print('Ошибка \n {}'.format(http_error))
 
 
 if __name__ == '__main__':
