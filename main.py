@@ -37,7 +37,7 @@ def main():
     parser.add_argument('link', help='type link or bitlink')
     args = parser.parse_args()
 
-    link_components = urlparse(args.url)
+    link_components = urlparse(args.link)
     netloc = link_components[1]
     path = link_components[2]
     link = f'{netloc}{path}'
@@ -45,7 +45,7 @@ def main():
         'Authorization': bitly_token
     }
     payload = {
-        'long_url': args.url
+        'long_url': args.link
     }
 
     try:
