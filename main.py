@@ -33,11 +33,10 @@ def main():
     bitly_token = os.environ['BITLY_TOKEN']
 
     parser = argparse.ArgumentParser(description="link shortener")
-    parser.add_argument('url', nargs='?',
-                        help='link')
-    namespace = parser.parse_args()
+    parser.add_argument('url', help='print url')
+    args = parser.parse_args()
 
-    link_components = urlparse(namespace.url)
+    link_components = urlparse(args.url)
     netloc = link_components[1]
     path = link_components[2]
     link = f'{netloc}{path}'
@@ -45,19 +44,16 @@ def main():
         'Authorization': bitly_token
     }
     payload = {
-        'long_url': namespace.url
+        'long_url': args.url
     }
 
-    if check_bitlink(headers, link):
-        try:
+    try:
+        if check_bitlink(headers, link):
             print('Количество кликов: ', count_clicks(headers, link))
-        except requests.exceptions.HTTPError as e:
-            print('Ошибка \n {}'.format(e))
-    else:
-        try:
+        else:
             print('Битлинк', shorten_link(headers, payload))
-        except requests.exceptions.HTTPError as e:
-            print('Ошибка \n {}'.format(e))
+    except requests.exceptions.HTTPError as e:
+        print('Ошибка \n {}'.format(e))
 
 
 if __name__ == '__main__':
